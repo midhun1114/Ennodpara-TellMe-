@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kettolu</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'vendor2/bootstrap/css/bootstrap.min.css'%}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Google fonts - Popppins for copy-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="{% static 'css2/orionicons.css'%}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'css2/style.default.css'%}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{% static 'css2/custom.css'%}">
+    <!-- Favicon-->
+
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a><a href="index.html" class="navbar-brand font-weight-bold text-uppercase text-base">MFA'S ENGILEE ENNOD PARA.... :)</a>
+        <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+          <li class="nav-item">
+
+          </li>
+
+          <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="{% static 'img2/avatar-61.jpg'%}" alt="Jason Doe" style="max-width: 4.5rem;" class="img-fluid rounded-circle shadow"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
+<p style="
+    padding-top: 20px;
+    margin: 20px 20px 30px 44px ; font-size: 20px;
+">let's hear what others has to say</p>
+
+      <div class="page-holder w-100 d-flex flex-wrap">
+        <div class="container-fluid px-xl-5">
+          <div class="input-group">
+   <div class="form-outline serchb" style="
+    margin: 30px;
+">
+   <form action="search" method="post" class="form-inline">
+         {%csrf_token%}
+                      <div class="form-group">
+                        <label for="inlineFormInput" class="sr-only">Name</label>
+                        <input name="search" id="inlineFormInput" type="text" placeholder="Name" class="mr-3 form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+
+  </div>
+
+</div>
+
+          <section class="py-5">
+              <form action="kettolu" method="post" class="form-inline">
+         {%csrf_token%}
+
+
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="
+    margin: 0px 30px 10px 30px;
+">Go Back</button>
+                      </div>
+                    </form>
+              {%if obj%}
+              {% for post in obj %}
+            <div class="row">
+
+              <div class="col-lg-8 mb-5">
+                <div class="card">
+                  <div class="card-header">
+                    <h1 class="h6 text-uppercase mb-0">{{post.title}}</h1>
+
+
+
+
+                  </div>
+                  <div class="card-body">
+                      <p  ><h5> {%if post.name2 %}{{post.name2}} {%else%} Anonymous {%endif%}
+                      said <br></h5>
+
+
+
+                    <p style="font-size :15px">{{post.description}}</p>
+
+                      <p  ><h5> {%if post.song%} and dedicated a <a href="{{post.song}}" target="_blank" rel="noopener noreferrer">Song</a>  {%endif%}
+                      <br></h5>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+              {% endfor %}
+              {%else%}
+             <p style="
+    margin: 0px 50px 0px 40px;
+"> No results</p>
+              {%endif%}
+          </section>
+        </div>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">MFA &copy; 2021</p>
+              </div>
+
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="{% static 'vendor2/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'vendor2/popper.js/umd/popper.min.js'%}"> </script>
+    <script src="{% static 'vendor2/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'vendor2/jquery.cookie/jquery.cookie.js'%}"> </script>
+    <script src="{% static 'vendor2/chart.js/Chart.min.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="{% static 'js2/front.js'%}"></script>
+  </body>
+</html>
